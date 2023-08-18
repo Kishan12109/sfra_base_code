@@ -1,0 +1,4 @@
+<h3>Product Cloth Info</h3>
+
+<h6> Cloth Type      :  <isprint value="${pdict.product.clothtype}"/></h6>
+<h6> Cloth Material  :  <isprint value="${pdict.product.clothmaterial}"/></h6>

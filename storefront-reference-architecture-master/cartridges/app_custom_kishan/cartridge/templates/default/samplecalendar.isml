@@ -1,0 +1,5 @@
+<h2>
+The current date and time is : ${pdict.currentDate}<br/>
+The currernt year and month in numeric: ${pdict.dateString}<br/>
+The Date and month only: ${pdict.formattedDate}
+</h2>

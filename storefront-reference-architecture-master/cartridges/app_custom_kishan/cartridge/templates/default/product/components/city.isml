@@ -1,0 +1,5 @@
+<h3>Product Origin Details</h3>
+
+<h6> Sustainability       :  <isprint value="${pdict.product.isSustainable}"/></h6>
+<h6> Country              :  <isprint value="${pdict.product.cityOrigin}"/></h6>
+<h6> ZipCode              :  <isprint value="${pdict.product.zipCode}"/></h6>

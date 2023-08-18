@@ -1,0 +1,18 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/testpage.js');
+    </isscript>
+    <h1>Type in the name of the Country to serach</h1>
+    Country Name to Search : <input type="text" class="js-country" name="country" value=""/>
+    <button type="button" class="js-lastupdates">Click here</button>
+    <input type="hidden" class="js-search-country" value="${URLUtils.url('Service1-FindCountryAjax')}"/>
+    <hr>
+    <div class="js-click-msg">
+
+    </div>
+    <div class="js-json-txt">
+
+    </div>
+
+</isdecorate>

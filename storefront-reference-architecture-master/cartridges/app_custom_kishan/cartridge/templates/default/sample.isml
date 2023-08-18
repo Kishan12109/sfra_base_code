@@ -1,0 +1,4 @@
+<isdecorate template="common/layout/page">
+    <h1> We are working from below country</h1>
+    ${JSON.stringify(pdict.HookResult)}
+</isdecorate>

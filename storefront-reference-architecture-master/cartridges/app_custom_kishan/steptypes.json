@@ -1,0 +1,191 @@
+{
+    "step-types": {
+        "script-module-step": [
+            {
+                "@type-id": "custom.Order_Export_Customattribute_To_CSV",
+                "@supports-site-context": "true",
+                "@supports-organization-context": "false",
+                "module": "app_custom_kishan/cartridge/scripts/jobs/export/exportCustomAttr.js",
+                "function": "Runexp",
+                "parameters": {
+                    "parameters": [
+                        {
+                            "@name": "OutputFileName",
+                            "description": "Output filename, default is orders.csv",
+                            "@type": "string",
+                            "@required": false,
+                            "@trim": true
+                        },
+                        {
+                            "@name": "DestinationFolder",
+                            "description": "Where the file will be stored, relative to IMPEX/",
+                            "@type": "string",
+                            "@required": true,
+                            "@trim": true
+                        },
+                        {
+                            "@name": "FullExport",
+                            "description": "Export all orders, not only the delta since the last export",
+                            "@type": "boolean",
+                            "@required": false,
+                            "@trim": true
+                        }
+                    ]
+                },
+                "status-codes": {
+                    "status": [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when the step failed with an error."
+                        },
+                        {
+                            "@code": "FINISHED",
+                            "description": "Used when the step finished successfully."
+                        },
+                        {
+                            "@code": "FINISHED_WITH_WARNINGS",
+                            "description": "Used when the step finished with warnings."
+                        }
+                    ]
+                }
+            },
+            {
+                "@type-id": "custom.Order_Import_Customattribute_CSV",
+                "module": "app_custom_kishan/cartridge/scripts/jobs/import/importCustomAttr.js",
+                "function": "Runexp",
+                "parameters": {
+                    "parameters": [
+                        {
+                            "@name": "FilePattern",
+                            "description": "Input File pattern to search in folder(default is \"/\\S+.csv/\"(*.csv)",
+                            "@type": "string",
+                            "@required": false,
+                            "@trim": true
+                        },
+                        {
+                            "@name": "Folder",
+                            "description": "Folder where we find files, relative to IMPEX/src/",
+                            "@type": "string",
+                            "@required": "true"
+                        },
+                        {
+                            "@name": "AfterProcessAction",
+                            "description": "Action on file after process",
+                            "@type": "string",
+                            "@required": true,
+                            "@trim": true,
+                            "enum-values": {
+                                "value": [
+                                    "ARCHIVE",
+                                    "REMOVE"
+                                ]
+                            }
+                        },
+                        {
+                            "@name": "Delimiter",
+                            "description": "CSV delimiter",
+                            "@type": "string",
+                            "@required": "true"
+                        }
+                    ]
+                },
+                "status-codes": {
+                    "status": [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when an error occurred."
+                        },
+                        {
+                            "@code": "OK",
+                            "description": "Used when everything went well."
+                        },
+                        {
+                            "@code": "WARN",
+                            "description": "Used when small, but acceptable problems occurred."
+                        }
+                    ]
+                }
+            },
+            {
+                "@type-id": "custom.OrderDetailsObjects",
+                "@supports-site-context": "true",
+                "@supports-organization-context": "false",
+                "description": "Read Custom Objects of type orderDetails and write them to a csv file",
+                "module": "app_custom_kishan/cartridge/scripts/jobs/export/writeOrderDetails.js",
+                "function": "writeorderObject",
+                "transactional": "false",
+                "timeout-in-seconds": "900",
+                "parameters": {
+                    "parameter": [
+                        {
+                            "@name": "FileName",
+                            "@type": "string",
+                            "@required": "false",
+                            "description": "Name of the CSV file",
+                            "min-length": "6",
+                            "max-length": "50"
+                        }
+                    ]
+                },
+                "status-codes": {
+                    "status": [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when the step failed with an error."
+                        },
+                        {
+                            "@code": "FINISHED",
+                            "description": "Used when the step finished successfully."
+                        },
+                        {
+                            "@code": "FINISHED_WITH_WARNINGS",
+                            "description": "Used when the step finished with warnings."
+                        }
+                    ]
+                }
+            },
+            {
+                "@type-id": "custom.Order_Import_Customattribute_Xml",
+                "@supports-site-context": "true",
+                "@supports-organization-context": "false",
+                "description": "Read Custom Objects of type orderDetails and write them to a csv file",
+                "module": "app_custom_kishan/cartridge/scripts/jobs/import/importCustomAttrXml.js",
+                "function": "RunimpXML",
+                "timeout-in-seconds": "900",
+                "parameters": {
+                    "parameter": [
+                        {
+                            "@name": "FilePattern",
+                            "description": "Input File pattern to search in folder(default is \"/\\S+.xml/\"(*.xml)",
+                            "@type": "string",
+                            "@required": "false",
+                            "@trim":"true"
+                        },
+                        {
+                            "@name": "Folder",
+                            "description": "Folder where we find files, relative to IMPEX/src/",
+                            "@type": "string",
+                            "@required": "true"
+                        }
+                    ]
+                },
+                "status-codes": {
+                    "status": [
+                        {
+                            "@code": "ERROR",
+                            "description": "Used when the step failed with an error."
+                        },
+                        {
+                            "@code": "FINISHED",
+                            "description": "Used when the step finished successfully."
+                        },
+                        {
+                            "@code": "FINISHED_WITH_WARNINGS",
+                            "description": "Used when the step finished with warnings."
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

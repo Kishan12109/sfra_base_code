@@ -1,0 +1,8 @@
+{
+    "hooks": [
+        {
+            "name": "app.custom.getcountrydetail.service",
+            "script": "./cartridge/scripts/hooks/custom/GetCountry.js"
+        }
+    ]
+}

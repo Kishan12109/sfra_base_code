@@ -1,0 +1,5 @@
+<isinclude template="/components/modules" sf-toolkit="off" />
+
+ <iscontentasset aid="info_sample" />
+
+ <isslot id = "demo-kishan" description="it is about slot usage" context="global" />
